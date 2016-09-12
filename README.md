@@ -7,11 +7,13 @@
 # React ContextMenu
 
 ContextMenu in React.
+forked from ..... 
 
 ## Installation
 
+~~npm install --save react-contextmenu~~
 ```
-npm install --save react-contextmenu
+~~npm install --save react-contextmenu~~
 ```
 
 ## Usage
