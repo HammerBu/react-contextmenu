@@ -2,7 +2,7 @@ import React from "react";
 import invariant from "invariant";
 import _isObject from "lodash.isobject";
 
-import store from "./redux/store";
+
 
 export default function(identifier, configure) {
     return function(Component) {
@@ -84,6 +84,7 @@ export default function(identifier, configure) {
                 store.dispatch({
                     type: "SET_PARAMS",
                     data: {
+                        originEvent:event,
                         x: xPos,
                         y: yPos,
                         currentItem,

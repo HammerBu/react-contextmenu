@@ -6,7 +6,8 @@ import MenuTypes from "./constants";
 
 const Menu = React.createClass({
     displayName: "Menu",
-    handleClick(e, data) {
+    handleClick(oe,e, data) {
+        console.log(oe);
         this.props.addLog(`Clicked on menu ${data.item}`);
     },
     render() {
