@@ -14,7 +14,7 @@ const Menu = React.createClass({
             <ContextMenu identifier={MenuTypes.simple}>
                 <MenuItem onClick={this.handleClick} data={{item: "item 1"}}>Menu Item 1</MenuItem>
                 <MenuItem onClick={this.handleClick} data={{item: "item 2"}}>Menu Item 2</MenuItem>
-                <SubMenu title="A SubMenu">
+                <SubMenu title="">
                     <span>abaaf</span>
                     <MenuItem onClick={this.handleClick} data={{item: "subitem 1"}}>SubItem 1</MenuItem>
                     <SubMenu title="Another SubMenu">

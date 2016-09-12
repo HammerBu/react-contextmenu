@@ -64,11 +64,11 @@ let SubMenu = React.createClass({
             menuClasses = "react-context-menu-item submenu";
         children = this.props.children.map( (o, i)=>{
               if( (o.type== SubMenu) || (o.type== MenuWrapper) ||(o.type==MenuItem )  )
-                    return React.cloneElement(o, { style: {color:'#f00'}, key: i })
+                    return React.cloneElement(o, {  key: i })
         });
         let vo= this.props.children.map( (o, i)=>{
             if((o.type!= SubMenu) && (o.type!= MenuWrapper) && (o.type!=MenuItem))
-                return React.cloneElement(o, { style: {color:'#f02'}, key: i })
+                return React.cloneElement(o, {   key: i })
         });
         return (
             <div ref={(c) => (this.item = c)} className={menuClasses} style={menuStyles}
