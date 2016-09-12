@@ -1,5 +1,4 @@
 import React from "react";
-import monitor from "../monitor";
 
 import Modal from "react-overlays/lib/Modal";
 
@@ -45,7 +44,7 @@ let ContextMenuWrapper = React.createClass({
     hideMenu(e) {
         e.preventDefault();
         this.menu.parentNode.removeEventListener("contextmenu", this.hideMenu);
-        monitor.hideMenu();
+       // monitor.hideMenu();
     },
     getMenuPosition(x, y) {
         let scrollX = document.documentElement.scrollTop,
@@ -64,7 +63,7 @@ let ContextMenuWrapper = React.createClass({
         if (x + rect.width > innerWidth) {
             menuStyles.left -= rect.width;
         }
-        
+
         if (menuStyles.top < 0) {
             menuStyles.top = (rect.height < innerHeight) ? (innerHeight - rect.height) / 2 : 0;
         }

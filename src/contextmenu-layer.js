@@ -104,6 +104,8 @@ export default function(identifier, configure) {
                 attributes.onMouseOut = this.handleMouseUp;
                 attributes.ref = (c) => (this.target = c);
 
+
+
                 return React.createElement(
                     renderTag,
                     attributes,
