@@ -2,6 +2,8 @@ import React from "react";
 import classnames from "classnames";
 
 import MenuWrapper from "./wrapper";
+import {MenuItem} from "../index";
+
 
 const menuStyles = {
     position: "relative",
@@ -17,7 +19,7 @@ let SubMenu = React.createClass({
     },
     getDefaultProps() {
         return {
-            hoverDelay: 500
+            hoverDelay: 200
         };
     },
     getInitialState() {
@@ -60,13 +62,21 @@ let SubMenu = React.createClass({
                 active: visible
             }),
             menuClasses = "react-context-menu-item submenu";
-
+        children = this.props.children.map( (o, i)=>{
+              if( (o.type== SubMenu) || (o.type== MenuWrapper) ||(o.type==MenuItem )  )
+                    return React.cloneElement(o, { style: {color:'#f00'}, key: i })
+        });
+        let vo= this.props.children.map( (o, i)=>{
+            if((o.type!= SubMenu) && (o.type!= MenuWrapper) && (o.type!=MenuItem))
+                return React.cloneElement(o, { style: {color:'#f02'}, key: i })
+        });
         return (
             <div ref={(c) => (this.item = c)} className={menuClasses} style={menuStyles}
                 onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
                 <a href="#" className={classes} onClick={this.handleClick}>
-                    {title}
+                    {vo}{title}
                 </a>
+
                 <MenuWrapper visible={visible}>
                 {children}
                 </MenuWrapper>
