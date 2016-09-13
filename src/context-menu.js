@@ -3,8 +3,8 @@ import React from "react";
 
 
 
-class ContextMenu extends React.compants{
-        init(x, y) {
+class ContextMenu extends  React.Component{
+        init=(x, y)=> {
         let scrollX = document.documentElement.scrollTop,
             scrollY = document.documentElement.scrollLeft,
             { innerWidth, innerHeight } = window,
@@ -31,17 +31,17 @@ class ContextMenu extends React.compants{
             }
 
             return menuStyles;
-        },
-        render() {
+        };
+        render=()=> {
 
             return (
-                    <nav   style={this.init()}  id={this.props.id}
+                    <nav   style={{} }  id={this.props.id}
                         className="react-context-menu">
-                        {children}
+                        {this.props.children}
                     </nav>
 
             );
         }
-});
+};
 
 export default ContextMenu;

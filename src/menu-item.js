@@ -11,24 +11,25 @@ let { PropTypes } = React;
  *  data
  *
  */
-const MenuItem = React.createClass({
 
-    handleClick(event) {
+class MenuItem extends  React.Component{
+
+    handleClick=(event)=> {
         event.preventDefault();
         if (typeof onClick === "function") {
             this.props.onClick(event,this.props.data,this.props.src);
         }
-    },
-    render() {
+    };
+    render=()=> {
 
         return (
-            <div className={"react-context-menu-item"} {...props}>
+            <div className={"react-context-menu-item"} {...this.props}>
                 <a href="#" className={"react-context-menu-link"} onClick={this.handleClick}>
-                    {children}
+                    {this.props.children}
                 </a>
             </div>
         );
     }
-});
+};
 
 export default MenuItem;

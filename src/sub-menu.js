@@ -9,19 +9,18 @@ const menuStyles = {
     zIndex: "auto"
 };
 
-let SubMenu = React.createClass({
-    displayName: "SubMenu",
-    propTypes: {
-        title: React.PropTypes.string.isRequired,
-        disabled: React.PropTypes.bool,
-        hoverDelay: React.PropTypes.number
-    },
+class SubMenu extends  React.Component{
 
+    constructor(prpos){
+        super(prpos);
+        this.state={};
+        this.state.position={};
+    };
 
-    handleClickNull(e) {
+    handleClickNull=(e)=> {
         e.preventDefault();
-    },
-    getMenuPosition() {
+    };
+    getMenuPosition=()=>{
         let { innerWidth, innerHeight } = window,
             rect = this.menu.getBoundingClientRect(),
             position = {};
@@ -40,8 +39,9 @@ let SubMenu = React.createClass({
         }
 
         return { position };
-    },
-    getPositionStyles() {
+    };
+    getPositionStyles=()=>{
+
         let style = {},
             { position } = this.state;
 
@@ -51,17 +51,18 @@ let SubMenu = React.createClass({
         if (position.left) style.right = "100%";
 
         return style;
-    },
-    render() {
+    };
+    render=()=>{
 
         let menus = this.props.children.map( (o, i)=>{
-              if( (o.type== SubMenu) || (o.type== MenuWrapper) ||(o.type==MenuItem )  )
+              if( (o.type== SubMenu)  ||(o.type==MenuItem )  )
                     return React.cloneElement(o, {  key: i })
         });
         let other= this.props.children.map( (o, i)=>{
-            if((o.type!= SubMenu) && (o.type!= MenuWrapper) && (o.type!=MenuItem))
+            if((o.type!= SubMenu)  && (o.type!=MenuItem))
                 return React.cloneElement(o, {   key: i })
         });
+        let visible=true;
 
         const substyle = {
             display: visible ? "block" : "none",
@@ -73,7 +74,7 @@ let SubMenu = React.createClass({
                   style={menuStyles}
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}>
-                <a href="#" className={r"eact-context-menu-link"} onClick={this.handleClick}>
+                <a href="#" className={"react-context-menu-link"} onClick={this.handleClick}>
                     {other}{this.props.title}
                 </a>
                     <nav   style={substyle} className="react-context-menu">
@@ -84,7 +85,7 @@ let SubMenu = React.createClass({
     }
 
 
-});
+};
 
 export default SubMenu;
 

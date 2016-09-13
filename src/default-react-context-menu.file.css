@@ -1,6 +1,7 @@
 .react-context-menu {
     min-width: 160px;
-    padding: 5px 0;
+    max-width:160px;
+    padding: 5px;
     margin: 2px 0 0;
     font-size: 16px;
     color: #373a3c;
@@ -11,22 +12,41 @@
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
     outline: none;
+    text-overflow: ellipsis;
+
 }
 
 .react-context-menu-link {
     display: inline-block;
     width: 100%;
-    padding: 3px 20px;
+    max-width:150px;
+    text-overflow: ellipsis;
+    padding: 1px ;
+//  margin-left:10px;
+//  padding-right:0px;
     clear: both;
     font-weight: 400;
-    line-height: 1.5;
     color: #373a3c;
     text-align: inherit;
     white-space: nowrap;
     background: 0 0;
     border: 0;
+    overflow: hidden;
+    line-height: 18px;
+    height:18px;
+    text-decoration: none;
 }
 
+i.material-icons{vertical-align:bottom}
+
+.react-context-menu-link .material-icons{
+//  position: absolute;
+//   top: 50%;
+//   left: 50%;
+//  -webkit-transform: translate(-1px,-1px);
+// transform: translate(-1px,1px);
+    font-size:18px !important;
+}
 .react-context-menu-link.active,
 .react-context-menu-link:hover {
     color: #fff;
@@ -34,13 +54,32 @@
     border-color: #0275d8;
     text-decoration: none;
 }
-.react-context-menu-item.submenu > a {
-    padding-right: 27px;
+.react-context-menu-item  {
+// height:20px;
+    padding-right: 3px;
+    font-size:18px;
+    line-height:18px;
 }
+.react-context-menu-item.submenu > a {
+    padding-right: 3px;
+    text-decoration: none;
+}
+.react-context-menu-item.submenu {
+//padding:1px;
+    line-height:18px;
+    vertical-align: middle;
+    height:20px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
 
 .react-context-menu-item.submenu > a:after {
     content: "▶";
     display: inline-block;
     position: absolute;
-    right: 7px;
+    right: 0px;
+// background:white;
+    width:20px;
 }
