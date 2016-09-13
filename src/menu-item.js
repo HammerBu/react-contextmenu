@@ -5,55 +5,25 @@ import assign from "object-assign";
 
 let { PropTypes } = React;
 
+/**
+ *  src  Element
+ *  event
+ *  data
+ *
+ */
 const MenuItem = React.createClass({
-    displayName: "MenuItem",
-    propTypes: {
-        onClick: PropTypes.func.isRequired,
-        data: PropTypes.object,
-        disabled: PropTypes.bool,
-        preventClose: PropTypes.bool
-    },
-    getDefaultProps() {
-        return {
-            disabled: false,
-            data: {},
-            attributes: {}
-        };
-    },
+
     handleClick(event) {
-        let { disabled, onClick, data, preventClose } = this.props;
-
         event.preventDefault();
-
-        if (disabled) return;
-
-
-        var newData = {}
-        assign(newData, data, monitor.getItem());
-
         if (typeof onClick === "function") {
-            onClick(monitor.getOriginEvent(),event, newData);
+            this.props.onClick(event,this.props.data,this.props.src);
         }
-
-        if (preventClose) return;
-
-        monitor.hideMenu();
     },
     render() {
-        let { disabled, children, attributes: { className = "", ...props } } = this.props,
-            menuItemClassNames = `react-context-menu-item ${className}`;
-
-        const classes = classnames({
-            "react-context-menu-link": true,
-            disabled
-        });
-
-
-
 
         return (
-            <div className={menuItemClassNames} {...props}>
-                <a href="#" className={classes} onClick={this.handleClick}>
+            <div className={"react-context-menu-item"} {...props}>
+                <a href="#" className={"react-context-menu-link"} onClick={this.handleClick}>
                     {children}
                 </a>
             </div>

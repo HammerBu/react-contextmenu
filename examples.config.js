@@ -3,7 +3,7 @@
 var webpack = require("webpack");
 
 module.exports = {
-    entry: ["./examples/index.js"],
+    entry: ["./examples/sub-menu.js"],
     output: {
         filename: "bundle.js",
         sourceMapFileName: "bundle.js.map",

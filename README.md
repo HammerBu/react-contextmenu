@@ -15,6 +15,8 @@ forked from .....
 ```
 ~~npm install --save react-contextmenu~~
 ```
+import defaultcss from react-contextmenu
+you need config webpack /*.file.css/ loader
 
 ## Usage
 
