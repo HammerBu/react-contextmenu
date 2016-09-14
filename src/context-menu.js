@@ -1,9 +1,12 @@
 import React from "react";
 
 
-
-
+/**
+ *  it will auto mount parent DOM element on contextMenu!
+ */
 class ContextMenu extends  React.Component{
+
+
         init=(x, y)=> {
         let scrollX = document.documentElement.scrollTop,
             scrollY = document.documentElement.scrollLeft,
@@ -35,7 +38,7 @@ class ContextMenu extends  React.Component{
         render=()=> {
 
             return (
-                    <nav   style={{} }  id={this.props.id}
+                    <nav  ref="sss" style={{} }  id={this.props.id}
                         className="react-context-menu">
                         {this.props.children}
                     </nav>
