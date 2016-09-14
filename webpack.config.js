@@ -5,7 +5,7 @@ var webpack = require("webpack");
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: "dist/react-contextmenu.js",
+        filename: "dist/react-contextmenu-yu.js",
         libraryTarget: 'umd',
         library: 'ReactContextMenu'
     },

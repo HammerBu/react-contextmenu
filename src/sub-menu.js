@@ -1,7 +1,6 @@
 import React from "react";
-import classnames from "classnames";
 
-import {MenuItem} from "./index";
+import MenuItem from "./menu-item"
 
 
 const menuStyles = {

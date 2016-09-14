@@ -1,6 +1,6 @@
 {
-  "name": "react-contextmenu",
-  "version": "1.6.2",
+  "name": "react-contextmenu-yu",
+  "version": "1.6.3",
   "description": "Context Menu implemented in React",
   "main": "modules/index.js",
   "keywords": [
@@ -17,8 +17,8 @@
     "clean": "rimraf -rf ./dist && rimraf -rf ./modules",
     "start": "node server.js",
     "dist": "webpack --progress --profile --colors",
-    "module": "babel src --out-dir modules",
-    "build": "npm run test && npm run clean && npm run dist && npm run module",
+    "module": "babel src --out-dir modules&& cp src/default-react-context-menu.file.css modules/",
+    "build": "npm run clean && npm run dist && npm run module",
     "examples": "webpack --config examples.config.js --progress --profile --colors",
     "watch": "./node_modules/.bin/webpack --config examples.config.js --progress --profile --colors --watch",
     "prepublish": "npm run build"
@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vkbansal/react-contextmenu.git"
+    "url": "https://github.com/youwi/react-contextmenu.git"
   },
   "bugs": {
     "url": "https://github.com/vkbansal/react-contextmenu/issues"
@@ -36,10 +36,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "invariant": "^2.2.1",
-    "lodash.isobject": "^3.0.2",
-    "object-assign": "^4.1.0",
-    "react-overlays": "^0.6.3",
-    "redux": "^3.5.2"
+    "react-overlays": "^0.6.3"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
