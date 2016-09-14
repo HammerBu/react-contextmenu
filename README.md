@@ -1,22 +1,34 @@
  
 
-# React ContextMenu @yu
-
+## React ContextMenu @yu 
 ContextMenu in React.
+
 forked from https://github.com/vkbansal/react-contextmenu
 
+##Feature
+
+you can custeom Icons
+
+callback will return DOM element.
+![img](http://img.blog.csdn.net/20160915005025428)
 ## Installation
 
-~~npm install --save react-contextmenu~~
+npm install --save react-contextmenu-yu
 
-import defaultcss from react-contextmenu
-you need config webpack /*.file.css/ loader
 
 ## Usage
-  菜单会自动绑定到上级元素! 自动解绑到document
+ 
   auto bind to parentNode,auto bind to document
-  高级用法参考examples/index.js
+ 
   see examples/index.js
+  
+  you have to add css manually:(webpack)
+   
+  you need config webpack /*.file.css/ loader
+    
+    import s from "style!raw!react-contextmenu-yu/modules/default-react-context-menu.file.css"
+
+  
 ```js
 <div !!!!parentNode!!!!!>
     <ContextMenu  >
@@ -50,15 +62,17 @@ you need config webpack /*.file.css/ loader
     srcElement come from rightClick
     
 I have no idea of reusing Menus.
-you can create one ContextMenu,then use jquery  to bind  events to   Tree Element manually..
-create too much Menus will slow browser.
+
+you can create one ContextMenu,then use jquery  to bind  events to   TreeElement manually.
+
+create too much Menus will slow browser, but pass args easier.
 
 like this:
 ```js
  see example:
     $(".tree").bind("contextmenu",function(event){
          getElementById(ContextMenuID).dispatchEvent("contextmenu",event,$(this));
-    }
+    };
     
         $(".gg").bind("contextmenu",function(event){
             event.stopPropagation();
