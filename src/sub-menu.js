@@ -18,8 +18,13 @@ class SubMenu extends  React.Component{
         this.state.visible=false;
     };
 
+    hideContextMenu=(e)=>{
+        //  e.preventDefault();
+        this.setState({visible:false});
+    };
     handleClickSubmenu=(e)=> {
         e.preventDefault();
+        e.stopPropagation();
         var pp =this.getMenuPosition();
         this.setState({visible:!this.state.visible, top:pp.top,left:pp.left,bottom:pp.bottom,right:pp.right});
 
@@ -62,11 +67,11 @@ class SubMenu extends  React.Component{
 
         let menus = this.props.children.map( (o, i)=>{
               if( (o.type== SubMenu)  ||(o.type==MenuItem )  )
-                    return React.cloneElement(o, {  key: i })
+                    return React.cloneElement(o, {  key: i,src:this.props.src  })
         });
         let other= this.props.children.map( (o, i)=>{
             if((o.type!= SubMenu)  && (o.type!=MenuItem))
-                return React.cloneElement(o, {   key: i })
+                return React.cloneElement(o, {   key: i,src:this.props.src })
         });
 
         const substyle = {
@@ -81,10 +86,11 @@ class SubMenu extends  React.Component{
          };
         return (
             <div  className={ "react-context-menu-item submenu"}
-
                   style={menuStyles}
                   onMouseEnter={this.handleMouseEnter}
-                  onMouseLeave={this.handleMouseLeave}>
+                  onMouseLeave={this.handleMouseLeave}
+                  onClick={this.hideContextMenu}>
+
                 <a href="#" className={"react-context-menu-link"} onClick={this.handleClickSubmenu}>
                     {other}{this.props.title}
                 </a>

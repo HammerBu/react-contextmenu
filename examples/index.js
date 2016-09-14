@@ -10,8 +10,15 @@ import ReactDOM from "react-dom";
 
 const Menu = React.createClass({
     displayName: "Menu",
-    handleClick(e, data) {
-        console.log(e);
+    /**
+     *
+     * @param e clickEvent
+     * @param data  the data
+     * @param el  the element which triger ContextMenu
+     */
+    handleClick(e, data,el) {
+        //you will get 3 argments
+        console.log(e,data,el);
     },
     render() {
         return (

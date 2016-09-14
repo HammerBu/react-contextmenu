@@ -16,15 +16,13 @@ class MenuItem extends  React.Component{
 
     handleClick=(event)=> {
         event.preventDefault();
-        if (typeof onClick === "function") {
-            this.props.onClick(event,this.props.data,this.props.src);
-        }
+        this.props.onClick(event,this.props.data,this.props.src);
     };
     render=()=> {
 
         return (
-            <div className={"react-context-menu-item"} {...this.props}>
-                <a href="#" className={"react-context-menu-link"} onClick={this.handleClick}>
+            <div className={"react-context-menu-item"} {...this.props} onClick={this.handleClick}>
+                <a href="#" className={"react-context-menu-link"} >
                     {this.props.children}
                 </a>
             </div>
