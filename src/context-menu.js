@@ -1,5 +1,7 @@
 import React from "react";
 
+import MenuItem from "./menu-item"
+import SubMenu from "./sub-menu"
 /**
  *  it will auto mount parent DOM element on contextMenu!
  */
@@ -12,24 +14,36 @@ class ContextMenu extends  React.Component{
 
     componentDidMount=()=>{
         this.dom.parentNode.addEventListener("contextmenu",(e)=>{
+          //  hack()
             this.showContextMenu(e);
         });
+       /// this.dom.onclick=(e)=>{
         document.addEventListener("click",(e)=>{
             this.hideContextMenu(e);
-        })
+           // console.log("click body");
+
+            //e.stopPropagation();
+        });
+        // this.dom.parentNode.addEventListener("click",(e)=>{
+        //     // document.body.addEventListener("click",(e)=>{
+        //     this.hideContextMenu(e);
+        //     console.log("click body");
+        //     //   e.stopPropagation();
+        // })
     };
     hideContextMenu=(e)=>{
       //  e.preventDefault();
         this.setState({visiable:false});
+       // e.stopPropagation();
     };
     showContextMenu=(e)=>{
         e.preventDefault();
-        this.state.menuStyles=this.getMousePosition();
+        this.state.menuStyles=this.getMousePosition(e);
         this.state.visiable=true;
         this.state.src=e.target;
         this.setState({visiable:true});
     };
-    getMousePosition=()=> {
+    getMousePosition=(event)=> {
         const x = event.clientX || (event.touches && event.touches[0].pageX),
             y = event.clientY || (event.touches && event.touches[0].pageY);
         let scrollX = document.documentElement.scrollTop,
@@ -57,16 +71,24 @@ class ContextMenu extends  React.Component{
 
     };
     render=()=> {
-        let menuStyles={...this.state.menuStyles, visibility:this.state.visiable?"visible":"hidden"};
+        let menuStyles={...this.state.menuStyles, visibility:this.state.visiable?"visible":"hidden",position:"fixed"};
 
-        let hackedChildren= this.props.children.map( (o, i)=>{
-            return React.cloneElement(o, { key:i,  src: this.state.src })
-        });
+        let hackedChildren={};
+        if(this.props.children.type==MenuItem || this.props.children.type==SubMenu )
+              hackedChildren=React.cloneElement(this.props.children, {   src: this.state.src });
+        else {
+            hackedChildren= this.props.children.map( (o, i)=>{
+                return React.cloneElement(o, { key:i,  src: this.state.src })
+            });
+        }
+
         return (
+
             <nav  ref={(c)=>this.dom=c} style={menuStyles}   id={this.props.id}  onClick={this.hideContextMenu}
                   className="react-context-menu">
                 {hackedChildren}
             </nav>
+
 
         );
     }

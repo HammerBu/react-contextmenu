@@ -10,19 +10,118 @@
 <link rel="stylesheet" href="cdn/icon.css">
 <link rel="stylesheet" href="cdn/material.min.css">
 <link rel="stylesheet" href="cdn/default.css">
+<script src="cdn/jquery-3.1.0.min.js"></script>
 <body>
 
-    <div  id="main"></div>
+open console to see log
+
+<h1 id="H1_1">
+
+</h1>
+    <div  id="main">
+        main
+    </div>
+
+
+group1:
+    <div  id="hack-div">
+        hack-div
+
+        <div>
+            fawefawef
+        </div>
+
+    </div>
+
+group2
+<div id="group2">
+
+</div>
+
+m3:
+<div id="m3">
+
+</div>
+..........
+<div id="tt">
+
+</div>
+
+<div class="gg">aaaaaaaaaaaa</div>
+<div class="gg">aaaaaaaaaaaa</div>
+<div class="gg">aaaaaaaaaaaa</div>
+<div class="gg">aaaaaaaaaaaa</div><div class="gg">aaaaaaaaaaaa</div>
+<div class="gg">aaaaaaaaaaaa</div>
+<div class="gg">aaaaaaaaaaaa</div>
+
+<div class="gg">
+
+</div><div class="gg">
+
+</div>
+
 
 </body>
 <style>
+    #H1_1 {
+        box-sizing: border-box;
+        color: rgb(51, 51, 51);
+        height: 39px;
+        text-size-adjust: 100%;
+        width: 1140px;
+        column-rule-color: rgb(51, 51, 51);
+        perspective-origin: 570px 19.5px;
+        transform-origin: 570px 19.5px;
+        border: 0px none rgb(51, 51, 51);
+        font: normal normal 500 normal 36px / 39.6px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 20px 0px 10px;
+        outline: rgb(51, 51, 51) none 0px;
+    }/*#H1_1*/
+
+
+    #m3{
+
+        padding:100px;
+        background:#84ffff;
+    }
+    #group2{
+
+        padding:100px;
+        background:#84ffff;
+    }
     #main{
 
         padding:100px;
         background:#84ffff;
+    }
+    #hack-div{
+
+        padding:100px;
+        background:#11ffff;
+    }
+    #tt{
+
+        padding:100px;
+        background:#11ffff;
+    }
+    .gg{
+
+        padding:100px;
+        background:#11ffff;
     }
 
 </style>
 
 
 <script src="bundle.js"></script>
+<script>
+
+    $(".gg").bind("contextmenu",function(event){
+        event.stopPropagation();
+        event.preventDefault();
+        var evt = document.createEvent( 'HTMLEvents' );
+        evt.initEvent("contextmenu", true, true);
+        document.getElementById("mainContextMenu").dispatchEvent(evt,"contextmenu");
+        console.log("bindding");
+    });
+</script>

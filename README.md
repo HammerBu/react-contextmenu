@@ -13,8 +13,9 @@ import defaultcss from react-contextmenu
 you need config webpack /*.file.css/ loader
 
 ## Usage
-  会自动绑定到上级元素!
-  auto bind to parentNode
+  菜单会自动绑定到上级元素! 自动解绑到document
+  auto bind to parentNode,auto bind to document
+  高级用法参考examples/index.js
   see examples/index.js
 ```js
 <div !!!!parentNode!!!!!>
@@ -44,4 +45,27 @@ you need config webpack /*.file.css/ loader
     
 </div>
 ```
- 
+    onClick(click-event,data,srcElement)
+     
+    srcElement come from rightClick
+    
+I have no idea of reusing Menus.
+you can create one ContextMenu,then use jquery  to bind  events to   Tree Element manually..
+create too much Menus will slow browser.
+
+like this:
+```js
+ see example:
+    $(".tree").bind("contextmenu",function(event){
+         getElementById(ContextMenuID).dispatchEvent("contextmenu",event,$(this));
+    }
+    
+        $(".gg").bind("contextmenu",function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            var evt = document.createEvent( 'HTMLEvents' );
+            evt.initEvent("contextmenu", true, true);
+            document.getElementById("mainContextMenu").dispatchEvent(evt,"contextmenu");
+            console.log("bindding");
+        });
+```
